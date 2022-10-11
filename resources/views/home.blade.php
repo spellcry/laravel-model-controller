@@ -3,27 +3,31 @@
 @section('metaTitle', 'Films Home')
     
 @section('content')
-    <div class="container">
-        <h1>Films</h1>
+    <div class="home container">
+        <h1 class="title">Films</h1>
         <ul class="films-list">
             @forelse ($films as $film)
                 <li class="list-item">
-                    <h3 class="title">
+                    <h3 class="film-title">
                         {{ $film->title }}
                     </h3>
-                    <p>
+                    <p class="original-title">
+                        <span class="accent">Original Title:</span>
                         {{ $film->original_title }}
                     </p>
-                    <p>
-                        {{ $film->nationality }}
+                    <p class="nationality">
+                        <span class="accent">Nationality:</span>
+                        {{ ucfirst($film->nationality) }}
                     </p>
-                    <p>
+                    <p class="date">
                         @php
                             $date = new DateTime($film->date);                            
                         @endphp
+                        <span class="accent">Date:</span>
                         {{ $date->format('d-m-Y') }}
                     </p>
-                    <p>
+                    <p class="vote">
+                        <span class="accent">Vote:</span>
                         {{ $film->vote }}
                     </p>
                 </li>
