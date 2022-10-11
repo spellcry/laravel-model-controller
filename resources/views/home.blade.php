@@ -18,7 +18,10 @@
                         {{ $film->nationality }}
                     </p>
                     <p>
-                        {{ $film->date }}
+                        @php
+                            $date = new DateTime($film->date);                            
+                        @endphp
+                        {{ $date->format('d-m-Y') }}
                     </p>
                     <p>
                         {{ $film->vote }}
