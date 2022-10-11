@@ -17,7 +17,15 @@
                     </p>
                     <p class="nationality">
                         <span class="accent">Nationality:</span>
-                        {{ ucfirst($film->nationality) }}
+                        @php
+                            $nationalities = explode('/', $film->nationality);
+                        @endphp
+                        @foreach ($nationalities as $nationality)
+                            {{ ucfirst($nationality) }}
+                            @if ($loop->index < count($nationalities) - 1)
+                                /
+                            @endif
+                        @endforeach
                     </p>
                     <p class="date">
                         @php
